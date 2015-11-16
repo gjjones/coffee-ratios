@@ -10,16 +10,20 @@ class App extends Component {
   render () {
     return (
       <div>
-        <h1>Coffee Ratios</h1>
-        <WeightInput
-          weight={this.props.brewCoffeeWeight}
-          onUpdateWeight={this.updateBrewCoffeeWeight.bind(this)}
-        />
+        <h1>Cold Brew Ratios</h1>
+        <h2>
+          <WeightInput
+            weight={this.props.brewCoffeeWeight}
+            onChange={this.updateBrewCoffeeWeight.bind(this)}
+          />
+          g of coffee grounds
+        </h2>
         <CoffeeSummary
-          brewRatio={this.props.brewRatio}
-          brewCoffeeWeight={this.props.brewCoffeeWeight}
+          brewCoffeeParts={this.props.brewCoffeeParts}
+          brewWaterParts={this.props.brewWaterParts}
           brewWaterVolume={this.props.brewWaterVolume}
-          yieldVolumeRatio={this.props.yieldVolumeRatio}
+          yieldConcentrateParts={this.props.yieldConcentrateParts}
+          yieldWaterParts={this.props.yieldWaterParts}
           yieldVolume={this.props.yieldVolume}
           afterDilutionVolume={this.props.afterDilutionVolume}
         />
@@ -34,10 +38,12 @@ class App extends Component {
 
 function mapStateToProps (state) {
   return {
-    brewRatio: state.brewRatio,
+    brewCoffeeParts: state.brewCoffeeParts,
+    brewWaterParts: state.brewWaterParts,
     brewCoffeeWeight: state.brewCoffeeWeight,
     brewWaterVolume: state.brewWaterVolume,
-    yieldVolumeRatio: state.yieldVolumeRatio,
+    yieldConcentrateParts: state.yieldConcentrateParts,
+    yieldWaterParts: state.yieldWaterParts,
     yieldVolume: state.yieldVolume,
     afterDilutionVolume: state.afterDilutionVolume,
   };

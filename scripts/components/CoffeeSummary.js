@@ -4,14 +4,16 @@ import React, { Component, } from 'react';
 
 class CoffeeSummary extends Component {
   render () {
+    let brewWaterVolume = Math.ceil(this.props.brewWaterVolume),
+      yieldVolume = Math.ceil(this.props.yieldVolume),
+      afterDilutionVolume = Math.ceil(this.props.afterDilutionVolume);
     return (
       <div>
-        <h2>brewRatio: {this.props.brewRatio}</h2>
-        <h2>brewCoffeeWeight: {this.props.brewCoffeeWeight}</h2>
-        <h2>brewWaterVolume: {this.props.brewWaterVolume}</h2>
-        <h2>yieldVolumeRatio: {this.props.yieldVolumeRatio}</h2>
-        <h2>yieldVolume: {this.props.yieldVolume}</h2>
-        <h2>afterDilutionVolume: {this.props.afterDilutionVolume}</h2>
+        <p>at {this.props.brewCoffeeParts}:{this.props.brewWaterParts} coffee to water</p>
+        <p>will need {brewWaterVolume}ml of water</p>
+        <p>should yield {yieldVolume}ml of concentrate</p>
+        <p>which diluted at {this.props.yieldConcentrateParts}:{this.props.yieldWaterParts} concetrate to water</p>
+        <p>should yield {afterDilutionVolume} ml ready-to-drink cold brew</p>
       </div>
     );
   }

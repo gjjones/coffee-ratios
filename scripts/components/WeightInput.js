@@ -10,25 +10,21 @@ class WeightInput extends Component {
 
   render () {
     return (
-      <div>
-        <input
-          type="number"
-          value={this.state.weight}
-          onChange={this.updateWeight.bind(this)}
-        />
-        <button onClick={this.applyWeight.bind(this)}>Set Weight</button>
-      </div>
+      <input
+        className="grounds-weight"
+        type="number"
+        placeholder="####"
+        value={this.state.weight}
+        onChange={this.updateWeight.bind(this)}
+      />
     );
   }
 
   updateWeight (e) {
     this.setState({ weight: e.target.value, });
-  }
-
-  applyWeight () {
-    this.props.onUpdateWeight(this.state.weight);
+    this.props.onChange(e.target.value || 0);
   }
 }
-WeightInput.defaultProps = { weight: 0, };
+WeightInput.defaultProps = { weight: '', };
 
 export default WeightInput;
